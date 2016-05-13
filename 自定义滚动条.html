@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义滚动条</title>
+	<style>
+		#parent {
+			width: 600px;
+			height: 20px;
+			background: #ccc;
+			position: relative;
+			margin: 10px auto;
+		}
+		#div1 {
+			width: 20px; 
+			height: 20px;
+			background: red;
+			position: absolute;
+		}
+		#div2 {
+			position: relative;
+			width: 400px;
+			height: 300px;
+			border: 1px solid #666;
+			overflow: hidden;
+			margin: 0 auto;
+		}
+		#div3 {
+			position: absolute;
+			top: 0;
+			left: 0;
+			padding: 10px;
+		}
+	</style>
+	<script>
+	window.onload = function(){
+		var oDiv = document.getElementById("div1");
+		var oParent = document.getElementById("parent");
+		var oDiv2 = document.getElementById("div2");
+		var oDiv3 = document.getElementById("div3");
+
+		var disX = 0;
+		var disY = 0;
+
+		oDiv.onmousedown = function(ev){
+			var oEvent = ev || event;
+
+			disX = oEvent.clientX - oDiv.offsetLeft;
+
+			document.onmousemove = function(ev){
+				var oEvent = ev || event;
+				var l=oEvent.clientX - disX;
+
+				if(l<0){
+					l = 0;
+				}else if(l>oParent.offsetWidth-oDiv.offsetWidth){
+					l = oParent.offsetWidth-oDiv.offsetWidth;
+				}
+
+				oDiv.style.left = l + "px";
+
+				var scale = l/(oParent.offsetWidth - oDiv.offsetWidth);
+
+				oDiv3.style.top = -scale*(oDiv3.offsetHeight - oDiv2.offsetHeight) + "px";
+			}
+
+			document.onmouseup = function(){
+				document.onmousemove = null;
+				document.onmouseup = null;
+			}
+		}
+
+		return false;
+	}	
+	</script>
+	
+</head>
+<body>
+	<div id="parent">
+		<div id="div1"></div>
+	</div>
+	<div id="div2">
+		<div id="div3">
+    （一）云台木墅：75-210平米；选用芬兰、加拿大百年树龄原木；防腐、防虫、抗震；冬暖夏凉、四季舒适；平层递台、独门入户；天地温泉、花草泳池；养生养心、延年益寿；云健康配套，宜居、度假。 （二）云镜雅苑：100-452平米；平层低密度住宅，尊享私属领地；背山面湖而建，高负氧离子；花树鸟鸣，山水健康；在山水自然中调理身心；温泉入户，乐享养生；健康养生，乐活养老；云健康配套，宜居、度假。 （三）风车公馆：85-168平米；退台式花园设计；整体建筑与风车古堡浑然天成，国家专利房型；面湖而居、推窗即景；远眺福源寺，聆听晨钟暮鼓，安心、静心。 （四）云湖名居：36-232平米；规划高层，视野开阔；坐北朝南，采光性好；无敌景观，清新静养；温泉入户，乐享养生；云健康配套，宜居、度假。
+    （一）云台木墅：75-210平米；选用芬兰、加拿大百年树龄原木；防腐、防虫、抗震；冬暖夏凉、四季舒适；平层递台、独门入户；天地温泉、花草泳池；养生养心、延年益寿；云健康配套，宜居、度假。 （二）云镜雅苑：100-452平米；平层低密度住宅，尊享私属领地；背山面湖而建，高负氧离子；花树鸟鸣，山水健康；在山水自然中调理身心；温泉入户，乐享养生；健康养生，乐活养老；云健康配套，宜居、度假。 （三）风车公馆：85-168平米；退台式花园设计；整体建筑与风车古堡浑然天成，国家专利房型；面湖而居、推窗即景；远眺福源寺，聆听晨钟暮鼓，安心、静心。 （四）云湖名居：36-232平米；规划高层，视野开阔；坐北朝南，采光性好；无敌景观，清新静养；温泉入户，乐享养生；云健康配套，宜居、度假。
+    （一）云台木墅：75-210平米；选用芬兰、加拿大百年树龄原木；防腐、防虫、抗震；冬暖夏凉、四季舒适；平层递台、独门入户；天地温泉、花草泳池；养生养心、延年益寿；云健康配套，宜居、度假。 （二）云镜雅苑：100-452平米；平层低密度住宅，尊享私属领地；背山面湖而建，高负氧离子；花树鸟鸣，山水健康；在山水自然中调理身心；温泉入户，乐享养生；健康养生，乐活养老；云健康配套，宜居、度假。 （三）风车公馆：85-168平米；退台式花园设计；整体建筑与风车古堡浑然天成，国家专利房型；面湖而居、推窗即景；远眺福源寺，聆听晨钟暮鼓，安心、静心。 （四）云湖名居：36-232平米；规划高层，视野开阔；坐北朝南，采光性好；无敌景观，清新静养；温泉入户，乐享养生；云健康配套，宜居、度假。
+		</div>
+	</div>
+</body>
+</html>
