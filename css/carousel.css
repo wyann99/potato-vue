@@ -26,18 +26,18 @@
 	z-index: 10;
 	width: 100px;
 	height: 270px;
+	cursor: pointer;
 }
 
 .poster-main .poster-prev-btn {
 	left: 0;
+	background: url(../images/c/btn_l.png) no-repeat center center;
 }
 
 .poster-main .poster-next-btn {
 	right: 0;
+	background: url(../images/c/btn_r.png) no-repeat center center;
 }
-
-
-
 
 
 

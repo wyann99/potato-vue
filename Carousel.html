@@ -9,8 +9,8 @@
 	<script src="js/carousel.js"></script>
 </head>
 <body style="padding:50px">
-	<div class="poster-main">
-		<div class="poster-btn poster-prev-btn"><</div>
+	<div class="poster-main J_poster">
+		<div class="poster-btn poster-prev-btn"></div>
 			<ul class="poster-list">
 				<li class="poster-item"><a href=""><img src="images/c/1.jpg" alt=""></a></li>
 				<li class="poster-item"><a href=""><img src="images/c/2.jpg" alt=""></a></li>
@@ -20,8 +20,24 @@
 				<li class="poster-item"><a href=""><img src="images/c/6.jpg" alt=""></a></li>
 			</ul>
 
-		<div class="poster-btn poster-next-btn">></div>
+		<div class="poster-btn poster-next-btn"></div>
 	</div>
+<script>
+	$(function(){
 
+		// var setting = {
+		// 	width:1000,
+		// 	height:270,
+		// 	posterWidth:640,
+		// 	posterHeight:270,
+		// 	scale:0.9,
+		// 	speed:500,
+		// 	verticalAlign:'middle'
+		// }
+
+		Carousel.init($(".J_poster"));
+
+	});
+</script>
 </body>
 </html>
