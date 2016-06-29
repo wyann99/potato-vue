@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas+本地存储</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<style>
+		html,body{
+			margin: 0;
+			position: relative;
+			width: 100%;
+			height: 100%;
+			background: #0163a9;
+		}
+		
+		#wcanvas {
+			background: #f99;
+		}
+
+	</style>
+</head>
+<body>
+
+	<canvas id="wcanvas" width="100px" height="100px"></canvas>
+
+<script>
+	window.onload = function(){
+
+		var oCanvas = document.getElementById("wcanvas");
+		var oContext = oCanvas.getContext("2d");
+		var oImg = new Image();
+		// 单张图片
+		oImg.src = "england.png";
+		oImg.onload = function(){
+			oContext.drawImage(oImg,0,0,100,100);
+		}
+
+		// 多张图
+		var array = ["england.png","germany.png","france.png","portugal.png"];
+		for(var i=0;i<4;i++){ //预加载多张图片
+			oImg.src = array[i];
+		}
+		oImg.onload = function(){
+			oContext.drawImage(oImg,0,0,100,100);
+		}
+		
+	}
+</script>
+
+</body>
+</html>
