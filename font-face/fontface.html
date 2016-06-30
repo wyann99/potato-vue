@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Fontface</title>
+	<style>
+		@font-face {
+			font-family: "Amadeus";
+			src: url("amadeus-webfont.eot") format("embedded-opentype"),
+				 url("amadeus-webfont.ttf") format("truetype"),
+				 url("amadeus-webfont.woff") format("woff"),
+				 url("amadeus-webfont.svg") format("svg");
+		}
+		p {
+			font-family: "Amadeus";
+			font-size: 32px;
+			color: #343434;
+			line-height: 36px;
+			margin: 0;
+		}
+
+		/*经过测试 >=IE9 的可以看到效果；*/
+		/*在线提供 字体转换网站：http://www.fontsquirrel.com/fontface/generator*/
+
+		@font-face {
+			font-family: "icomoon";
+			src: url("fonts/icomoon.eot") format("embedded-opentype"),
+				 url("fonts/icomoon.woff") format("woff"),
+				 url("fonts/icomoon.ttf") format("truetype"),
+				 url("fonts/icomoon.svg") format("svg");
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		.mnicon {
+			font-family: "icomoon";
+			font-style: normal;
+			font-weight: normal;
+			font-size: 50px;
+			margin-right: 20px;
+		}
+
+		div{
+			margin: 20px 0;
+		}
+
+	</style>
+</head>
+<body>
+	<p>With You</p>
+	<p>There isn't a minute I would spend without you</p>
+	<p>There isn't a moment I would breathe without you</p>
+	<p>Every piece of my heart belongs to you</p>
+	<p>Nothing can stop us now</p>
+	<p>I walked in with a smile on my face</p>
+	<p>Cause seeing you makes me feel living grace</p>
+	<p>So I need to tell you right, right now something</p>
+	<p>I know you're scare of what the future holds</p>
+	<p>Don't get me wrong cause I do too</p>
+	<p>But right now I can tell you</p>
+	<p>You don't have to fear</p>
+	<p>Cause you and I are like the leaves and flower</p>
+	<p>Without you I can't live for an hour</p>
+	<p>I say you are crazy but I know that it is true</p>
+	<p>that if there was a forever I would spend with you</p>
+	<p>With you ...</p>
+
+	<div>
+		<i class="mnicon" style="color:#f24548;">&#xe907;</i>
+		<i class="mnicon" style="color:#ecb6b7;">&#xe908;</i>
+		<i class="mnicon" style="color:#f24548;">&#xe909;</i>
+		<i class="mnicon" style="">&#xe90a;</i>
+	</div>
+
+	<div>
+		<i class="mnicon" style="color:#351ec2;">&#xe902;</i>
+		<i class="mnicon" style="color:#ddd;">&#xe903;</i>
+		<i class="mnicon" style="color:#f65c27;">&#xe904;</i>
+		<i class="mnicon" style="">&#xe905;</i>
+	</div>
+	
+</body>
+</html>
