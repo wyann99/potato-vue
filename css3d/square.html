@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正方体</title>
+    <style>
+        html, body, div, span{margin:0;padding:0;border:0;outline:0;}
+        html,body{height: 100%;overflow: hidden;}
+        .wrap{
+            perspective: 2000px;
+            perspective-origin:center center;
+            margin-top: 200px;
+        }
+        .pageList{
+            width: 200px;height: 200px;margin: 0 auto;position: relative;
+            transform-style:preserve-3d;
+            transition:transform 5s;
+            transform-origin:center center;
+            animation: move 5s ease-in-out 1s alternate infinite;
+        }
+        .page{color: #fff;font-family: Arial;width: 200px;height: 200px;line-height: 200px;text-align: center;font-size: 100px;font-weight:bold;background-color: rgba(252,0,255,0.5);position: absolute;border: 1px solid #ffdbff;}
+        .page1{transform-origin:bottom;}
+        .page2{
+            transform:rotateY(-90deg);
+            transform-origin:right;
+        }
+        .page3{
+            transform:translateZ(-200px);
+            transform-origin:bottom;
+        }
+        .page4{
+            transform:rotateY(90deg);
+            transform-origin:left;
+        }
+        .page5{
+            transform:rotateX(-90deg);
+            transform-origin:top;
+        }
+        .page6{
+            transform:rotateX(90deg);
+            transform-origin:bottom;
+        }
+        @keyframes move{
+            0%{transform:rotate3d(0,0,0,0);}
+            100%{transform:rotate3d(0.6,0.6,0,360deg);}
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div id="pageWarp" class="pageList">
+        <div class="page page1">1</div>
+        <div class="page page2">2</div>
+        <div class="page page3">3</div>
+        <div class="page page4">4</div>
+        <div class="page page5">5</div>
+        <div class="page page6">6</div>
+    </div>
+</div>
+
+</body>
+</html>
