@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>星星闪动</title>
+</head>
+<body>
+	<div>
+		<canvas id="canvas" width="800" height="600"></canvas>
+	</div>
+	<script src="commonFunctions.js"></script>
+	<script>
+		var can;
+		var ctx;
+
+		var girlPic = new Image();
+		var starPic = new Image();
+
+		var num = 100;
+		var stars = [];
+
+		var lastTime;
+		var deltaTime;
+
+		var switchy = false;
+		var life = 0;
+
+		function init(){
+			can = document.getElementById("canvas");
+			ctx = can.getContext("2d");
+
+			w = can.width;
+			h = can.height;
+
+			document.addEventListener("mousemove",mousemove,false);
+
+			girlPic.src = "girl.jpg";
+			starPic.src = "star.png";
+
+			for(var i=0;i<num;i++){
+				var obj = new starObj();
+				stars.push(obj);
+				stars[i].init();
+			}
+
+			lastTime = Date.now();
+
+			gameLoop();
+
+		}
+
+		document.body.onload = init;
+
+		function gameLoop(){
+			window.requestAnimFrame(gameLoop);//浏览器兼容性见 commonFunctions.js
+			
+			var now = Date.now();
+			deltaTime = now - lastTime;
+			lastTime = now;
+
+			drawBackground();
+			drawGirl();
+			drawStars();
+			aliveUpdate();
+		}
+
+		function drawBackground(){
+			ctx.fillStyle = "#393550";
+			ctx.fillRect(0,0,w,h);
+		}
+
+		function drawGirl(){
+			//drawImage(img,x,y,w,h); 中心点在canvas左上角
+			ctx.drawImage(girlPic,100,150,600,300);
+		}
+
+		function mousemove(e){
+			if(e.offsetX || e.layerX){
+				var px = e.offsetX == undefined ? e.layerX : e.offsetX;
+				var py = e.offsetY == undefined ? e.layerY : e.offsetY;
+
+				// out switchy = flase;in switchy = true
+				// px 在范围内 && py 也在范围内
+				if(px >100 && px <700 && px >150 && py <450){
+					switchy = true;
+				}else{
+					switchy = false;
+				}
+				
+			}
+		}
+
+		// 星星 js
+		var starObj = function(){
+			this.x;
+			this.y;
+
+			this.picNo;
+			this.timer;
+
+			this.xSpd;
+			this.ySpd;
+		}
+
+		starObj.prototype.init = function(){
+			this.x = Math.random()*600 + 100;
+			this.y = Math.random()*300 + 150;
+
+			this.picNo = Math.floor(Math.random()*7);
+			this.timer = 0;
+
+			this.xSpd = Math.random() * 3 - 1.5;
+			this.ySpd = Math.random() * 3 - 1.5;
+		}
+
+		starObj.prototype.update = function(){
+			this.x += this.xSpd * deltaTime * 0.004;
+			this.y += this.ySpd * deltaTime * 0.004;
+
+			//this.x 超过范围 init
+			if(this.x <100 || this.x >700){
+				this.init();
+				return;
+			}
+			//this.y 重生
+			if(this.y <150 || this.y >450){
+				this.init();
+				return;
+			}
+
+			this.timer += deltaTime;
+			if(this.timer > 50){
+				this.picNo += 1;
+				this.picNo %= 7;
+				this.timer = 0;
+			}
+		}
+
+		starObj.prototype.draw = function(){
+			
+			// save()
+			ctx.save();
+			// globalAlpha 全局透明度
+			ctx.globalAlpha = life; //[0,1]
+
+			// drawImage(img,sx,sy,swidth,sheight,x,y,width,height);
+			ctx.drawImage(starPic,this.picNo * 7,0,7,7,this.x,this.y,7,7);
+
+			// restore()
+			ctx.restore();
+		}
+
+		function drawStars(){
+			for(var i=0;i<num;i++){
+				stars[i].update();
+				stars[i].draw();
+			}
+		}
+
+		function aliveUpdate(){
+			if(switchy){ //in area
+				// show stars
+				life += 0.03 * deltaTime * 0.05;
+				if(life >1){
+					lift = 1;
+				}
+			}else{
+				// hide stars
+				life -= 0.03 *deltaTime * 0.05;
+				if(life < 0){
+					life = 0;
+				}
+			}
+		}
+	</script>
+
+<!--
+	循环调用API
+	Window API:
+	1、requestAnimFrame(funcation(){}); 根据设备性能定义执行时间
+	2、setTimeout(function(){},time);
+	3、setInterval(function(){},time);
+
+	 效果分析：
+		 很多星星
+		 序列帧动画
+		 随机位移
+		 重生判断 
+-->
+</body>
+</html>
