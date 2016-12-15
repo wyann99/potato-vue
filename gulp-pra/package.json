@@ -1,0 +1,25 @@
+{
+  "name": "prac",
+  "version": "1.0.0",
+  "description": "this is for study gulp project",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "wangyan",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.18.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-clean-css": "^2.0.13",
+    "gulp-compass": "^2.1.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-csslint": "^1.0.0",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^1.9.1",
+    "gulp-uglify": "^2.0.0",
+    "run-sequence": "^1.2.2"
+  }
+}
