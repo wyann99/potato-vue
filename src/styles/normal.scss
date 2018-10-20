@@ -1,0 +1,45 @@
+// 根元素大小使用 vw 单位
+$vw_design: 750;
+html {
+    height: 100%;
+    font-size: ($vw_fontsize / ($vw_design / 2)) * 100vw;
+    // 同时，通过Media Queries 限制根元素最大最小值
+    @media screen and (max-width: 320px) {
+        font-size: 64px;
+    }
+    @media screen and (min-width: 540px) {
+        font-size: 108px;
+    }
+}
+
+// body 也增加最大最小宽度限制，避免默认100%宽度的 block 元素跟随 body 而过大过小
+body {
+    max-width: 540px;
+    min-width: 320px;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background:#FFF;
+}
+
+* {
+    outline: none;
+}
+
+#app {
+    width: 100%;
+    height: 100%;
+}
+
+.content {
+    padding: 0 rem(30);
+}
+
+input::-webkit-input-placeholder {
+    font-family: PingFangSC-Regular;
+    font-size: rem(15);
+    color: #BEC5CF;
+    letter-spacing: 0;
+
+}

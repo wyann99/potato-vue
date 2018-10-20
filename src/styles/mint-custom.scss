@@ -1,0 +1,53 @@
+// 自定义mint-ui组件样式
+.mint-cell-wrapper {
+    height: 100%;
+    width: 100%;
+    background: #F5F7FA;
+    border: 0 solid #02BF84;
+    border-radius: 2px;
+    .mint-cell-value {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        input {
+            height: 100%;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            background: #F5F7FA;
+            border: none;
+            font-family: PingFangSC-Regular;
+            font-size: rem(15);
+            color: #303741;
+            letter-spacing: 0;
+        }
+    }
+}
+
+.mint-cell,
+    {
+    background-image: none;
+}
+
+.mint-cell-wrapper {
+    background-image: none;
+}
+
+.mint-toast {
+    background: rgba(48, 55, 65, 0.9);
+    border-radius: 2px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto auto;
+    height: rem(18);
+    padding: rem(18) rem(20) !important;
+    width: max-content;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #ffffff;
+    letter-spacing: 0;
+    line-height: rem(18);
+}
